@@ -1,5 +1,30 @@
-# ai_engineer_poc
-Poc infer a model in multiple architectures
+# inference-lab
+
+Laboratoire pédagogique et expérimental pour apprendre l'inférence LLM de bout en bout.
+
+Le fil directeur du dépôt est :
+
+```text
+Concept
+   ↓
+PyTorch explicite
+   ↓
+pytest pédagogique
+   ↓
+notebook d'exploration
+   ↓
+GPU lorsque nécessaire
+   ↓
+benchmark
+   ↓
+profiling
+   ↓
+Triton si une question kernel/mémoire le justifie
+   ↓
+modèle complet
+```
+
+Objectif : construire progressivement une base de connaissance exécutable autour des tenseurs, Transformers, modèles complets, inférence, KV cache, GPU, kernels et backends matériels.
 
 # Qwen Inference Engine — From PyTorch to GPU & Spyre
 

@@ -18,7 +18,9 @@ MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"
 PROMPT = "Explain in one sentence what a tensor is."
 
 
-@pytest.mark.skip(reason="V0 à compléter manuellement : charger tokenizer + modèle Hugging Face puis vérifier les shapes.")
+@pytest.mark.hf
+@pytest.mark.slow
+@pytest.mark.skip(reason="Heavy V0 HF reference: enable manually after the lightweight foundation is stable.")
 def test_qwen_hf_reference_forward_shapes():
     """
     À implémenter par étapes :
@@ -36,4 +38,20 @@ def test_qwen_hf_reference_forward_shapes():
     - logits_ref: [B, T, vocab_size]
     - next_token_logits: [B, vocab_size]
     """
-    raise NotImplementedError("Implémentation volontairement laissée à l'étudiant.")
+    from transformers import AutoTokenizer, AutoModelForCausalLM
+
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+    model = AutoModelForCausalLM.from_pretrained(MODEL_ID)
+    messages = [{ 'role': "user", "content": PROMPT}]
+    inputs = tokenizer.apply_chat_template(
+        messages,
+        add_generation_prompt=True,
+        tokenize=True,
+        return_dict=True,
+        return_tensors="pt",
+    ).to(model.device)
+
+    outputs = model.generate(**inputs,max_new_tokens=40)
+    result = tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:])
+    print(result)
+    model.forward

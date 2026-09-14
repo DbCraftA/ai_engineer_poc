@@ -1,7 +1,7 @@
 [project]
-name = "ai-engineer-poc"
+name = "inference-lab"
 version = "0.1.0"
-description = "Educational Qwen inference engine POC across CPU, CUDA and Spyre backends."
+description = "Educational laboratory for LLM inference, PyTorch, GPU computing and inference engines."
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 license = { text = "Apache-2.0" }
@@ -17,17 +17,20 @@ dependencies = [
   "tokenizers>=0.20",
   "numpy>=1.26",
   "tqdm>=4.66",
+  "pytest>=8.3",
 ]
 
 [project.optional-dependencies]
 dev = [
-  "pytest>=8.3",
   "pytest-cov>=5.0",
   "ruff>=0.6",
 ]
 notebooks = [
   "ipykernel>=6.29",
   "jupyter>=1.1",
+]
+gpu = [
+  "triton>=3.0; platform_system == 'Linux'",
 ]
 
 [tool.pytest.ini_options]
@@ -37,8 +40,15 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = "-ra"
 markers = [
+  "cpu: CPU-only tests that should run in the lightweight environment",
+  "gpu: tests that require a GPU device",
+  "cuda: tests that require a CUDA-capable NVIDIA GPU",
+  "triton: tests that require Triton kernels",
   "slow: tests that download or run full Hugging Face models",
   "hf: tests that depend on Hugging Face Transformers or Hub access",
+  "model: tests that instantiate a model or model component",
+  "integration: tests crossing multiple modules or subsystems",
+  "perf: tests or checks related to performance measurement",
 ]
 
 [tool.ruff]
