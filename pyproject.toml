@@ -38,17 +38,19 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-addopts = "-ra"
+addopts = "-ra --import-mode=importlib"
 markers = [
-  "cpu: CPU-only tests that should run in the lightweight environment",
-  "gpu: tests that require a GPU device",
-  "cuda: tests that require a CUDA-capable NVIDIA GPU",
-  "triton: tests that require Triton kernels",
-  "slow: tests that download or run full Hugging Face models",
+  "tdd: roadmap TDD specification",
+  "cpu: CPU-only test",
+  "gpu: requires GPU",
+  "cuda: requires CUDA",
+  "triton: requires Triton and CUDA",
+  "slow: long-running test",
   "hf: tests that depend on Hugging Face Transformers or Hub access",
-  "model: tests that instantiate a model or model component",
-  "integration: tests crossing multiple modules or subsystems",
-  "perf: tests or checks related to performance measurement",
+  "model: model-level test",
+  "integration: integration test",
+  "perf: performance-related test",
+  "distributed: distributed execution",
 ]
 
 [tool.ruff]

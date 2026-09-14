@@ -1,0 +1,43 @@
+import pytest
+
+
+@pytest.mark.tdd
+@pytest.mark.perf
+def test_ttft_metric_measures_time_until_first_token():
+    """
+    Objectif
+    --------
+    Démontrer progressivement le comportement exprimé par `test_ttft_metric_measures_time_until_first_token`.
+
+    Concepts à comprendre
+    ---------------------
+    - TTFT
+    - shapes et layout lorsque pertinent
+    - rôle dans l'inférence LLM lorsque pertinent
+
+    Code cible
+    ----------
+    metrics
+
+    Comportement attendu
+    --------------------
+    Cette specification TDD décrit le comportement attendu pour la section 13.1.
+    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+
+    Critère de réussite
+    -------------------
+    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
+    après l'implémentation minimale dans src/.
+
+    TDD
+    ---
+    1. supprimer pytest.skip()
+    2. écrire l'assertion attendue
+    3. obtenir RED
+    4. implémenter le minimum dans src/
+    5. obtenir GREEN
+    6. refactorer sans changer le comportement
+    """
+    pytest.skip("Roadmap TDD — section pas encore activée")
+
+
