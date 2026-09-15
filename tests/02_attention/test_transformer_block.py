@@ -6,22 +6,30 @@ def test_transformer_block_preserves_hidden_shape():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_transformer_block_preserves_hidden_shape`.
+    Spécifier clairement la connaissance: transformer block preserves hidden shape.
 
     Concepts à comprendre
     ---------------------
     - TransformerBlock
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/nn/transformer_block.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 2.13.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à TransformerBlock doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/nn/transformer_block.py.
 
     Critère de réussite
     -------------------
@@ -31,11 +39,12 @@ def test_transformer_block_preserves_hidden_shape():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -45,22 +54,30 @@ def test_transformer_block_contains_attention_and_mlp_residual_paths():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_transformer_block_contains_attention_and_mlp_residual_paths`.
+    Spécifier clairement la connaissance: transformer block contains attention and mlp residual paths.
 
     Concepts à comprendre
     ---------------------
     - TransformerBlock
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/nn/transformer_block.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 2.13.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à TransformerBlock doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/nn/transformer_block.py.
 
     Critère de réussite
     -------------------
@@ -70,11 +87,12 @@ def test_transformer_block_contains_attention_and_mlp_residual_paths():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 

@@ -6,22 +6,30 @@ def test_causal_mask_prevents_future_tokens_from_contributing():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_causal_mask_prevents_future_tokens_from_contributing`.
+    Garantir qu’un token ne peut pas voir les positions futures.
 
     Concepts à comprendre
     ---------------------
     - causal mask
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/nn/attention/mask.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 2.4.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Les positions futures doivent être masquées avant softmax.
+
+    Assertion attendue
+    ------------------
+    assert masked_scores[..., future_positions] == -inf ou probs == 0
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser torch.triu, masked_fill, float("-inf").
 
     Critère de réussite
     -------------------
@@ -31,11 +39,12 @@ def test_causal_mask_prevents_future_tokens_from_contributing():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 

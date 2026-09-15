@@ -6,22 +6,30 @@ def test_qkv_projections_produce_expected_shapes():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_qkv_projections_produce_expected_shapes`.
+    Vérifier que les projections Q/K/V transforment hidden_states en tenseurs d’attention.
 
     Concepts à comprendre
     ---------------------
     - projection linéaire Q/K/V
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/nn/attention/qkv.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 2.1.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    q, k, v doivent avoir les shapes attendues selon heads et head_dim.
+
+    Assertion attendue
+    ------------------
+    assert q.shape == (B, num_heads, T, head_dim)
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser torch.nn.Linear et reshape/transpose.
 
     Critère de réussite
     -------------------
@@ -31,11 +39,12 @@ def test_qkv_projections_produce_expected_shapes():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 

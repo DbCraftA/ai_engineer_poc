@@ -7,22 +7,30 @@ def test_benchmark_executes_warmup_before_measurement():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_benchmark_executes_warmup_before_measurement`.
+    Spécifier clairement la connaissance: benchmark executes warmup before measurement.
 
     Concepts à comprendre
     ---------------------
     - benchmark warmup
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/benchmarks/runner.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 7.1.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à benchmark warmup doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/benchmarks/runner.py.
 
     Critère de réussite
     -------------------
@@ -32,11 +40,12 @@ def test_benchmark_executes_warmup_before_measurement():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -47,22 +56,30 @@ def test_benchmark_collects_multiple_measurements():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_benchmark_collects_multiple_measurements`.
+    Spécifier clairement la connaissance: benchmark collects multiple measurements.
 
     Concepts à comprendre
     ---------------------
     - répétitions
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     runner
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 7.2.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à répétitions doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: runner.
 
     Critère de réussite
     -------------------
@@ -72,11 +89,12 @@ def test_benchmark_collects_multiple_measurements():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -87,22 +105,30 @@ def test_benchmark_reports_median_latency():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_benchmark_reports_median_latency`.
+    Spécifier clairement la connaissance: benchmark reports median latency.
 
     Concepts à comprendre
     ---------------------
     - médiane
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     runner
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 7.3.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à médiane doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: runner.
 
     Critère de réussite
     -------------------
@@ -112,11 +138,12 @@ def test_benchmark_reports_median_latency():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 

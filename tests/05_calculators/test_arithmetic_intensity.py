@@ -6,22 +6,30 @@ def test_arithmetic_intensity_is_flops_divided_by_bytes():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_arithmetic_intensity_is_flops_divided_by_bytes`.
+    Spécifier clairement la connaissance: arithmetic intensity is flops divided by bytes.
 
     Concepts à comprendre
     ---------------------
     - arithmetic intensity
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/calculators/roofline.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 5.8.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à arithmetic intensity doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/calculators/roofline.py.
 
     Critère de réussite
     -------------------
@@ -31,11 +39,12 @@ def test_arithmetic_intensity_is_flops_divided_by_bytes():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -45,22 +54,30 @@ def test_roofline_limit_is_minimum_of_compute_and_bandwidth_limits():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_roofline_limit_is_minimum_of_compute_and_bandwidth_limits`.
+    Spécifier clairement la connaissance: roofline limit is minimum of compute and bandwidth limits.
 
     Concepts à comprendre
     ---------------------
     - roofline
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/calculators/roofline.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 5.9.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à roofline doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/calculators/roofline.py.
 
     Critère de réussite
     -------------------
@@ -70,11 +87,12 @@ def test_roofline_limit_is_minimum_of_compute_and_bandwidth_limits():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -84,22 +102,30 @@ def test_low_arithmetic_intensity_is_classified_as_bandwidth_limited():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_low_arithmetic_intensity_is_classified_as_bandwidth_limited`.
+    Spécifier clairement la connaissance: low arithmetic intensity is classified as bandwidth limited.
 
     Concepts à comprendre
     ---------------------
     - bottleneck
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     calculator
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 5.10.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à bottleneck doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: calculator.
 
     Critère de réussite
     -------------------
@@ -109,11 +135,12 @@ def test_low_arithmetic_intensity_is_classified_as_bandwidth_limited():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 

@@ -7,22 +7,30 @@ def test_all_gather_reconstructs_all_shards():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_all_gather_reconstructs_all_shards`.
+    Spécifier clairement la connaissance: all gather reconstructs all shards.
 
     Concepts à comprendre
     ---------------------
     - AllGather
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     future distributed
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 16.4.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à AllGather doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: future distributed.
 
     Critère de réussite
     -------------------
@@ -32,11 +40,12 @@ def test_all_gather_reconstructs_all_shards():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -47,22 +56,30 @@ def test_all_reduce_matches_single_device_reference_sum():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_all_reduce_matches_single_device_reference_sum`.
+    Spécifier clairement la connaissance: all reduce matches single device reference sum.
 
     Concepts à comprendre
     ---------------------
     - AllReduce
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     future distributed
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 16.5.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à AllReduce doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: future distributed.
 
     Critère de réussite
     -------------------
@@ -72,11 +89,12 @@ def test_all_reduce_matches_single_device_reference_sum():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 

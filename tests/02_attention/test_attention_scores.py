@@ -6,22 +6,30 @@ def test_attention_scores_compare_every_query_with_every_key():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_attention_scores_compare_every_query_with_every_key`.
+    Montrer que QKᵀ compare chaque query token à chaque key token.
 
     Concepts à comprendre
     ---------------------
     - score QKᵀ
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/nn/attention/naive.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 2.2.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Les scores doivent avoir une dimension query_length x key_length.
+
+    Assertion attendue
+    ------------------
+    assert scores.shape == (B, H, Tq, Tk)
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser q @ k.transpose(-2, -1).
 
     Critère de réussite
     -------------------
@@ -31,11 +39,12 @@ def test_attention_scores_compare_every_query_with_every_key():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -45,22 +54,30 @@ def test_attention_scores_are_scaled_by_inverse_sqrt_head_dimension():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_attention_scores_are_scaled_by_inverse_sqrt_head_dimension`.
+    Vérifier le scaling qui stabilise la softmax attention.
 
     Concepts à comprendre
     ---------------------
     - scaling
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/nn/attention/naive.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 2.3.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Les scores doivent être divisés par sqrt(head_dim).
+
+    Assertion attendue
+    ------------------
+    torch.testing.assert_close(scores, raw_scores / math.sqrt(head_dim))
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser math.sqrt et torch.testing.assert_close.
 
     Critère de réussite
     -------------------
@@ -70,11 +87,12 @@ def test_attention_scores_are_scaled_by_inverse_sqrt_head_dimension():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 

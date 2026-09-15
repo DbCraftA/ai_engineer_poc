@@ -6,22 +6,30 @@ def test_swiglu_uses_gate_and_up_projections():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_swiglu_uses_gate_and_up_projections`.
+    Comprendre le gating SwiGLU.
 
     Concepts à comprendre
     ---------------------
     - SwiGLU
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/nn/mlp/swiglu.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 2.12.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    La sortie intermédiaire doit être silu(gate) * up.
+
+    Assertion attendue
+    ------------------
+    torch.testing.assert_close(hidden, torch.nn.functional.silu(gate) * up)
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser torch.nn.functional.silu.
 
     Critère de réussite
     -------------------
@@ -31,11 +39,12 @@ def test_swiglu_uses_gate_and_up_projections():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -45,22 +54,30 @@ def test_swiglu_projects_back_to_hidden_dimension():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_swiglu_projects_back_to_hidden_dimension`.
+    Vérifier que le MLP revient à hidden_size après expansion.
 
     Concepts à comprendre
     ---------------------
     - SwiGLU
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/nn/mlp/swiglu.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 2.12.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le down projection doit produire [B,T,hidden_size].
+
+    Assertion attendue
+    ------------------
+    assert out.shape == (B, T, hidden_size)
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser trois Linear: gate_proj, up_proj, down_proj.
 
     Critère de réussite
     -------------------
@@ -70,11 +87,12 @@ def test_swiglu_projects_back_to_hidden_dimension():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 

@@ -6,22 +6,30 @@ def test_attention_output_is_weighted_sum_of_values():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_attention_output_is_weighted_sum_of_values`.
+    Relier les probabilités d’attention à la somme pondérée de V.
 
     Concepts à comprendre
     ---------------------
     - weighted V
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/nn/attention/naive.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 2.6.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    La sortie doit être weights @ v.
+
+    Assertion attendue
+    ------------------
+    torch.testing.assert_close(output, weights @ v)
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser torch.matmul sur les deux dernières dimensions.
 
     Critère de réussite
     -------------------
@@ -31,11 +39,12 @@ def test_attention_output_is_weighted_sum_of_values():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 

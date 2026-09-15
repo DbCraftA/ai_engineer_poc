@@ -6,22 +6,30 @@ def test_kv_cache_stores_keys_and_values_for_every_layer():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_kv_cache_stores_keys_and_values_for_every_layer`.
+    Spécifier clairement la connaissance: kv cache stores keys and values for every layer.
 
     Concepts à comprendre
     ---------------------
     - structure KV cache
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/cache/kv_cache.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 4.2.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à structure KV cache doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/cache/kv_cache.py.
 
     Critère de réussite
     -------------------
@@ -31,11 +39,12 @@ def test_kv_cache_stores_keys_and_values_for_every_layer():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -45,22 +54,30 @@ def test_kv_cache_grows_one_position_per_decode_step():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_kv_cache_grows_one_position_per_decode_step`.
+    Spécifier clairement la connaissance: kv cache grows one position per decode step.
 
     Concepts à comprendre
     ---------------------
     - croissance cache
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/cache/kv_cache.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 4.3.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Le comportement lié à croissance cache doit être observable avec un exemple minimal et déterministe.
+
+    Assertion attendue
+    ------------------
+    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+
+    Hints d'implémentation
+    ----------------------
+    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/cache/kv_cache.py.
 
     Critère de réussite
     -------------------
@@ -70,11 +87,12 @@ def test_kv_cache_grows_one_position_per_decode_step():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
