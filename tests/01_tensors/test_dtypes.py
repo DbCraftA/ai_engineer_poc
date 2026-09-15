@@ -6,22 +6,30 @@ def test_dtype_controls_bytes_per_element():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_dtype_controls_bytes_per_element`.
+    Relier dtype et coût mémoire élémentaire.
 
     Concepts à comprendre
     ---------------------
     - FP32, FP16, BF16
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/tensors/dtypes.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 1.8.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    float32, float16 et bfloat16 doivent exposer des element_size différents.
+
+    Assertion attendue
+    ------------------
+    assert torch.float32 tensor.element_size() == 4
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser torch.empty(..., dtype=...).element_size().
 
     Critère de réussite
     -------------------
@@ -31,11 +39,12 @@ def test_dtype_controls_bytes_per_element():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -45,22 +54,30 @@ def test_reduced_precision_changes_numerical_accuracy():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_reduced_precision_changes_numerical_accuracy`.
+    Observer qu’un dtype réduit modifie la précision numérique.
 
     Concepts à comprendre
     ---------------------
     - FP32, FP16, BF16
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/tensors/dtypes.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 1.8.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    Une opération en float16/bfloat16 peut différer légèrement de float32.
+
+    Assertion attendue
+    ------------------
+    torch.testing.assert_close(..., atol=..., rtol=...)
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser torch.testing.assert_close avec tolérances explicites.
 
     Critère de réussite
     -------------------
@@ -70,11 +87,12 @@ def test_reduced_precision_changes_numerical_accuracy():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
@@ -84,22 +102,30 @@ def test_tensor_memory_equals_numel_times_element_size():
     """
     Objectif
     --------
-    Démontrer progressivement le comportement exprimé par `test_tensor_memory_equals_numel_times_element_size`.
+    Calculer la mémoire brute occupée par un tensor dense.
 
     Concepts à comprendre
     ---------------------
     - mémoire tensor
     - shapes et layout lorsque pertinent
+    - différence entre tenseur temporaire, paramètre, buffer et sortie
     - rôle dans l'inférence LLM lorsque pertinent
 
     Code cible
     ----------
     src/inference_lab/tensors/memory.py
 
-    Comportement attendu
-    --------------------
-    Cette specification TDD décrit le comportement attendu pour la section 1.9.
-    Lorsque la section sera activée, elle sera remplacée par un vrai Arrange / Act / Assert.
+    Comportement à vérifier
+    -----------------------
+    La mémoire théorique vaut numel * element_size.
+
+    Assertion attendue
+    ------------------
+    assert bytes == x.numel() * x.element_size()
+
+    Hints d'implémentation
+    ----------------------
+    Utiliser numel(), element_size().
 
     Critère de réussite
     -------------------
@@ -109,11 +135,12 @@ def test_tensor_memory_equals_numel_times_element_size():
     TDD
     ---
     1. supprimer pytest.skip()
-    2. écrire l'assertion attendue
-    3. obtenir RED
-    4. implémenter le minimum dans src/
-    5. obtenir GREEN
-    6. refactorer sans changer le comportement
+    2. construire un Arrange / Act / Assert minimal
+    3. écrire l'assertion attendue
+    4. obtenir RED
+    5. implémenter le minimum dans src/
+    6. obtenir GREEN
+    7. refactorer sans changer le comportement
     """
     pytest.skip("Roadmap TDD — section pas encore activée")
 
