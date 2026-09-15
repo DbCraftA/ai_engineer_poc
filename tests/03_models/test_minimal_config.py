@@ -7,46 +7,48 @@ def test_minimal_transformer_config_defines_model_dimensions():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: minimal transformer config defines model dimensions.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `minimal transformer config defines model dimensions`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - configuration modèle
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/models/minimal_transformer/config.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à configuration modèle doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `minimal transformer config defines model dimensions`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `minimal transformer config defines model dimensions`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/models/minimal_transformer/config.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/models/minimal_transformer/config.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_minimal_transformer_config_defines_model_dimensions`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "minimal transformer config defines model dimensions"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/models/minimal_transformer/config.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "minimal transformer config defines model dimensions"
+
+    # Assert
+    assert actual == expected
 
 

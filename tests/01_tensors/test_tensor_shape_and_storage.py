@@ -6,47 +6,48 @@ def test_tensor_shape_represents_logical_dimensions():
     """
     Objectif
     --------
-    Montrer que la shape décrit les axes logiques d’un tenseur.
+    Dans ce test, l'objectif est de vérifier que pour un tenseur PyTorch représentant des hidden states de Transformer, la propriété `shape` expose bien les dimensions logiques dans l'ordre `[batch_size, sequence_length, hidden_size]`.
 
-    Concepts à comprendre
-    ---------------------
-    - tensor, shape, dimension, numel
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/tensors/inspection.py
+    Pourquoi c'est important
+    ------------------------
+    Cette convention est centrale en inférence LLM : les embeddings, les blocs Transformer et le LM head manipulent presque toujours des tenseurs organisés autour de `[B, T, C]`. Savoir lire cette shape permet de suivre le calcul sans deviner.
 
     Comportement à vérifier
     -----------------------
-    Un tenseur [B, T, C] expose batch, sequence et hidden dimension.
+    Étant donné un tenseur créé avec `torch.zeros(2, 3, 4)`, quand on lit `x.shape`, alors PyTorch doit retourner `torch.Size([2, 3, 4])`.
 
     Assertion attendue
     ------------------
-    assert x.shape == torch.Size([B, T, C])
+    `assert x.shape == torch.Size([batch_size, sequence_length, hidden_size])`
 
     Hints d'implémentation
     ----------------------
-    Utiliser torch.zeros ou torch.arange puis .shape.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Utiliser `torch.zeros(batch_size, sequence_length, hidden_size)`, lire `x.shape`, puis comparer avec `torch.Size([...])`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    import torch
+
+    batch_size = 2
+    sequence_length = 3
+    hidden_size = 4
+
+    # Act
+    x = torch.zeros(batch_size, sequence_length, hidden_size)
+
+    # Assert
+    assert x.shape == torch.Size([batch_size, sequence_length, hidden_size])
 
 
 @pytest.mark.tdd
@@ -54,47 +55,49 @@ def test_numel_is_product_of_dimensions():
     """
     Objectif
     --------
-    Relier la shape au nombre total d’éléments.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `numel is product of dimensions`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - tensor, shape, dimension, numel
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/tensors/inspection.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    numel doit être le produit des dimensions logiques.
+    Étant donné un exemple volontairement petit qui illustre `numel is product of dimensions`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert x.numel() == B * T * C
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `numel is product of dimensions`.
 
     Hints d'implémentation
     ----------------------
-    Utiliser torch.Tensor.numel().
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/tensors/inspection.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_numel_is_product_of_dimensions`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "numel is product of dimensions"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/tensors/inspection.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "numel is product of dimensions"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -102,47 +105,49 @@ def test_view_shares_storage_with_source_tensor():
     """
     Objectif
     --------
-    Comprendre qu’une view peut partager la même mémoire que sa source.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `view shares storage with source tensor`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - storage, partage mémoire
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/tensors/inspection.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Après view, les pointeurs de storage doivent être identiques.
+    Étant donné un exemple volontairement petit qui illustre `view shares storage with source tensor`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert view.untyped_storage().data_ptr() == x.untyped_storage().data_ptr()
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `view shares storage with source tensor`.
 
     Hints d'implémentation
     ----------------------
-    Préférer untyped_storage().data_ptr() à storage().data_ptr().
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/tensors/inspection.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_view_shares_storage_with_source_tensor`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "view shares storage with source tensor"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/tensors/inspection.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "view shares storage with source tensor"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -150,46 +155,48 @@ def test_clone_owns_independent_storage():
     """
     Objectif
     --------
-    Distinguer view et copie réelle.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `clone owns independent storage`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - storage, partage mémoire
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/tensors/inspection.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    clone doit produire un storage indépendant tout en gardant les mêmes valeurs.
+    Étant donné un exemple volontairement petit qui illustre `clone owns independent storage`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert clone.untyped_storage().data_ptr() != x.untyped_storage().data_ptr()
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `clone owns independent storage`.
 
     Hints d'implémentation
     ----------------------
-    Utiliser x.clone() et torch.testing.assert_close.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/tensors/inspection.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_clone_owns_independent_storage`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "clone owns independent storage"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/tensors/inspection.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "clone owns independent storage"
+
+    # Assert
+    assert actual == expected
 
 

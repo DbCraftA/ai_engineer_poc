@@ -6,47 +6,49 @@ def test_prefill_processes_complete_prompt():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: prefill processes complete prompt.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `prefill processes complete prompt`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - prefill
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/inference/prefill.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à prefill doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `prefill processes complete prompt`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `prefill processes complete prompt`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/inference/prefill.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Construire un prompt complet de longueur `T` ; vérifier que tous les tokens du prompt sont traités en une étape. Le code cible indiqué par la roadmap est `src/inference_lab/inference/prefill.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_prefill_processes_complete_prompt`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "prefill processes complete prompt"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/inference/prefill.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "prefill processes complete prompt"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -54,46 +56,48 @@ def test_prefill_populates_initial_kv_cache():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: prefill populates initial kv cache.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `prefill populates initial kv cache`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - prefill
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/inference/prefill.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à prefill doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `prefill populates initial kv cache`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `prefill populates initial kv cache`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/inference/prefill.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Utiliser de petits tenseurs `[num_layers, batch, heads, seq, head_dim]` et vérifier explicitement la longueur de séquence stockée. Le code cible indiqué par la roadmap est `src/inference_lab/inference/prefill.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_prefill_populates_initial_kv_cache`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "prefill populates initial kv cache"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/inference/prefill.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "prefill populates initial kv cache"
+
+    # Assert
+    assert actual == expected
 
 

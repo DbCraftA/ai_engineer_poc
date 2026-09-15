@@ -6,46 +6,48 @@ def test_naive_decode_reprocesses_previous_tokens():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: naive decode reprocesses previous tokens.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `naive decode reprocesses previous tokens`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - coût decode naïf
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    instrumentation inference
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à coût decode naïf doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `naive decode reprocesses previous tokens`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `naive decode reprocesses previous tokens`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: instrumentation inference.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Construire un exemple avec un prompt déjà prérempli puis un seul nouveau token ; vérifier que seule une position est ajoutée. Le code cible indiqué par la roadmap est `instrumentation inference`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_naive_decode_reprocesses_previous_tokens`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "naive decode reprocesses previous tokens"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `instrumentation inference`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "naive decode reprocesses previous tokens"
+
+    # Assert
+    assert actual == expected
 
 

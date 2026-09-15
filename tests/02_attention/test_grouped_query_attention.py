@@ -6,47 +6,49 @@ def test_gqa_uses_fewer_kv_heads_than_query_heads():
     """
     Objectif
     --------
-    Comprendre pourquoi GQA réduit la mémoire KV cache.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `gqa uses fewer kv heads than query heads`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - GQA
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/nn/attention/gqa.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    num_key_value_heads doit être inférieur à num_attention_heads.
+    Étant donné un exemple volontairement petit qui illustre `gqa uses fewer kv heads than query heads`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert num_kv_heads < num_query_heads
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `gqa uses fewer kv heads than query heads`.
 
     Hints d'implémentation
     ----------------------
-    Utiliser une config miniature inspirée Qwen.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/nn/attention/gqa.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_gqa_uses_fewer_kv_heads_than_query_heads`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "gqa uses fewer kv heads than query heads"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/nn/attention/gqa.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "gqa uses fewer kv heads than query heads"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -54,47 +56,49 @@ def test_multiple_query_heads_share_key_value_heads():
     """
     Objectif
     --------
-    Vérifier le partage des K/V entre groupes de query heads.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `multiple query heads share key value heads`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - GQA
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/nn/attention/gqa.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Plusieurs query heads doivent mapper vers le même KV head.
+    Étant donné un exemple volontairement petit qui illustre `multiple query heads share key value heads`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert query_head_to_kv_head[0] == query_head_to_kv_head[1]
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `multiple query heads share key value heads`.
 
     Hints d'implémentation
     ----------------------
-    Utiliser repeat_interleave ou une fonction de mapping simple.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/nn/attention/gqa.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_multiple_query_heads_share_key_value_heads`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "multiple query heads share key value heads"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/nn/attention/gqa.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "multiple query heads share key value heads"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -102,46 +106,48 @@ def test_mqa_uses_single_key_value_head():
     """
     Objectif
     --------
-    Comprendre le cas extrême MQA.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `mqa uses single key value head`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - MQA
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/nn/attention/gqa.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Tous les query heads doivent partager un seul KV head.
+    Étant donné un exemple volontairement petit qui illustre `mqa uses single key value head`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert num_key_value_heads == 1
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `mqa uses single key value head`.
 
     Hints d'implémentation
     ----------------------
-    Utiliser repeat_interleave sur la dimension heads.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/nn/attention/gqa.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_mqa_uses_single_key_value_head`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "mqa uses single key value head"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/nn/attention/gqa.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "mqa uses single key value head"
+
+    # Assert
+    assert actual == expected
 
 

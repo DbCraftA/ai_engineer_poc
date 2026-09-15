@@ -7,47 +7,49 @@ def test_benchmark_executes_warmup_before_measurement():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: benchmark executes warmup before measurement.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `benchmark executes warmup before measurement`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - benchmark warmup
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/benchmarks/runner.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à benchmark warmup doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `benchmark executes warmup before measurement`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `benchmark executes warmup before measurement`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/benchmarks/runner.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/benchmarks/runner.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_benchmark_executes_warmup_before_measurement`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "benchmark executes warmup before measurement"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/benchmarks/runner.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "benchmark executes warmup before measurement"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -56,47 +58,49 @@ def test_benchmark_collects_multiple_measurements():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: benchmark collects multiple measurements.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `benchmark collects multiple measurements`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - répétitions
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    runner
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à répétitions doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `benchmark collects multiple measurements`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `benchmark collects multiple measurements`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: runner.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `runner`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_benchmark_collects_multiple_measurements`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "benchmark collects multiple measurements"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `runner`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "benchmark collects multiple measurements"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -105,46 +109,48 @@ def test_benchmark_reports_median_latency():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: benchmark reports median latency.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `benchmark reports median latency`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - médiane
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    runner
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à médiane doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `benchmark reports median latency`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `benchmark reports median latency`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: runner.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `runner`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_benchmark_reports_median_latency`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "benchmark reports median latency"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `runner`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "benchmark reports median latency"
+
+    # Assert
+    assert actual == expected
 
 

@@ -7,47 +7,49 @@ def test_greedy_sampling_selects_highest_logit():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: greedy sampling selects highest logit.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `greedy sampling selects highest logit`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - greedy sampling
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/inference/sampling.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à greedy sampling doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `greedy sampling selects highest logit`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `greedy sampling selects highest logit`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/inference/sampling.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Utiliser des logits très simples et déterministes pour vérifier exactement le token sélectionné. Le code cible indiqué par la roadmap est `src/inference_lab/inference/sampling.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_greedy_sampling_selects_highest_logit`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "greedy sampling selects highest logit"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/inference/sampling.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "greedy sampling selects highest logit"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -56,47 +58,49 @@ def test_temperature_changes_probability_distribution():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: temperature changes probability distribution.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `temperature changes probability distribution`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - temperature
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/inference/sampling.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à temperature doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `temperature changes probability distribution`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `temperature changes probability distribution`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/inference/sampling.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/inference/sampling.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_temperature_changes_probability_distribution`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "temperature changes probability distribution"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/inference/sampling.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "temperature changes probability distribution"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -105,47 +109,49 @@ def test_top_k_excludes_tokens_outside_k_highest_logits():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: top k excludes tokens outside k highest logits.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `top k excludes tokens outside k highest logits`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - top-k
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/inference/sampling.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à top-k doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `top k excludes tokens outside k highest logits`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `top k excludes tokens outside k highest logits`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/inference/sampling.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Vérifier que les logits ont la shape `[batch_size, sequence_length, vocab_size]` et représentent un score par token du vocabulaire. Le code cible indiqué par la roadmap est `src/inference_lab/inference/sampling.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_top_k_excludes_tokens_outside_k_highest_logits`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "top k excludes tokens outside k highest logits"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/inference/sampling.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "top k excludes tokens outside k highest logits"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -154,46 +160,48 @@ def test_top_p_limits_candidates_by_cumulative_probability():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: top p limits candidates by cumulative probability.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `top p limits candidates by cumulative probability`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - top-p
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/inference/sampling.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à top-p doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `top p limits candidates by cumulative probability`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `top p limits candidates by cumulative probability`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/inference/sampling.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/inference/sampling.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_top_p_limits_candidates_by_cumulative_probability`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "top p limits candidates by cumulative probability"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/inference/sampling.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "top p limits candidates by cumulative probability"
+
+    # Assert
+    assert actual == expected
 
 

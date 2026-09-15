@@ -6,47 +6,49 @@ def test_rope_preserves_vector_norm():
     """
     Objectif
     --------
-    Vérifier que RoPE est une rotation et ne change pas la norme.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `rope preserves vector norm`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - RoPE
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/nn/positional/rope.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    La norme avant/après RoPE doit rester identique.
+    Étant donné un exemple volontairement petit qui illustre `rope preserves vector norm`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    torch.testing.assert_close(x.norm(dim=-1), y.norm(dim=-1))
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `rope preserves vector norm`.
 
     Hints d'implémentation
     ----------------------
-    Utiliser sin/cos, split pair/impair ou représentation complexe.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/nn/positional/rope.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_rope_preserves_vector_norm`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "rope preserves vector norm"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/nn/positional/rope.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "rope preserves vector norm"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -54,46 +56,48 @@ def test_rope_changes_representation_according_to_position():
     """
     Objectif
     --------
-    Montrer que RoPE encode la position dans Q/K.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `rope changes representation according to position`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - RoPE
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/nn/positional/rope.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Deux positions différentes doivent produire des représentations différentes.
+    Étant donné un exemple volontairement petit qui illustre `rope changes representation according to position`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert not torch.allclose(y_pos0, y_pos1)
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `rope changes representation according to position`.
 
     Hints d'implémentation
     ----------------------
-    Utiliser position_ids et fréquences RoPE.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/nn/positional/rope.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_rope_changes_representation_according_to_position`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "rope changes representation according to position"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/nn/positional/rope.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "rope changes representation according to position"
+
+    # Assert
+    assert actual == expected
 
 

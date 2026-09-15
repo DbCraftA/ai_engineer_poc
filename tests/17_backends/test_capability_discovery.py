@@ -6,46 +6,48 @@ def test_backend_reports_supported_dtypes_and_operations():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: backend reports supported dtypes and operations.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `backend reports supported dtypes and operations`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - capability discovery
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    future backends
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à capability discovery doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `backend reports supported dtypes and operations`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `backend reports supported dtypes and operations`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: future backends.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Utiliser `torch.empty(..., dtype=...)`, `.dtype`, `.element_size()` et `torch.testing.assert_close` si une comparaison numérique est nécessaire. Le code cible indiqué par la roadmap est `future backends`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_backend_reports_supported_dtypes_and_operations`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "backend reports supported dtypes and operations"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `future backends`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "backend reports supported dtypes and operations"
+
+    # Assert
+    assert actual == expected
 
 

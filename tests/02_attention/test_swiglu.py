@@ -6,47 +6,49 @@ def test_swiglu_uses_gate_and_up_projections():
     """
     Objectif
     --------
-    Comprendre le gating SwiGLU.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `swiglu uses gate and up projections`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - SwiGLU
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/nn/mlp/swiglu.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    La sortie intermédiaire doit être silu(gate) * up.
+    Étant donné un exemple volontairement petit qui illustre `swiglu uses gate and up projections`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    torch.testing.assert_close(hidden, torch.nn.functional.silu(gate) * up)
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `swiglu uses gate and up projections`.
 
     Hints d'implémentation
     ----------------------
-    Utiliser torch.nn.functional.silu.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/nn/mlp/swiglu.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_swiglu_uses_gate_and_up_projections`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "swiglu uses gate and up projections"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/nn/mlp/swiglu.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "swiglu uses gate and up projections"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -54,46 +56,48 @@ def test_swiglu_projects_back_to_hidden_dimension():
     """
     Objectif
     --------
-    Vérifier que le MLP revient à hidden_size après expansion.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `swiglu projects back to hidden dimension`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - SwiGLU
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/nn/mlp/swiglu.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le down projection doit produire [B,T,hidden_size].
+    Étant donné un exemple volontairement petit qui illustre `swiglu projects back to hidden dimension`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert out.shape == (B, T, hidden_size)
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `swiglu projects back to hidden dimension`.
 
     Hints d'implémentation
     ----------------------
-    Utiliser trois Linear: gate_proj, up_proj, down_proj.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec un exemple minimal, déterministe, sur CPU. Utiliser `torch.manual_seed(0)` si des valeurs aléatoires sont nécessaires. Le code cible indiqué par la roadmap est `src/inference_lab/nn/mlp/swiglu.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_swiglu_projects_back_to_hidden_dimension`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "swiglu projects back to hidden dimension"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/nn/mlp/swiglu.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "swiglu projects back to hidden dimension"
+
+    # Assert
+    assert actual == expected
 
 

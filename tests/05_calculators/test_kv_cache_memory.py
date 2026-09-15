@@ -6,47 +6,49 @@ def test_kv_cache_memory_matches_layers_heads_tokens_formula():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: kv cache memory matches layers heads tokens formula.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `kv cache memory matches layers heads tokens formula`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - KV cache memory
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/calculators/kv_cache_memory.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à KV cache memory doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `kv cache memory matches layers heads tokens formula`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `kv cache memory matches layers heads tokens formula`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/calculators/kv_cache_memory.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Utiliser `numel()`, `element_size()` et une formule explicite en bytes avant de créer une abstraction dans `src/`. Le code cible indiqué par la roadmap est `src/inference_lab/calculators/kv_cache_memory.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_kv_cache_memory_matches_layers_heads_tokens_formula`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "kv cache memory matches layers heads tokens formula"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/calculators/kv_cache_memory.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "kv cache memory matches layers heads tokens formula"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -54,47 +56,49 @@ def test_kv_cache_memory_scales_linearly_with_context_length():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: kv cache memory scales linearly with context length.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `kv cache memory scales linearly with context length`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - impact contexte
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    calculator
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à impact contexte doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `kv cache memory scales linearly with context length`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `kv cache memory scales linearly with context length`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: calculator.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Utiliser `numel()`, `element_size()` et une formule explicite en bytes avant de créer une abstraction dans `src/`. Le code cible indiqué par la roadmap est `calculator`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_kv_cache_memory_scales_linearly_with_context_length`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "kv cache memory scales linearly with context length"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `calculator`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "kv cache memory scales linearly with context length"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -102,46 +106,48 @@ def test_reducing_kv_heads_reduces_kv_cache_memory_proportionally():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: reducing kv heads reduces kv cache memory proportionally.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `reducing kv heads reduces kv cache memory proportionally`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - impact GQA
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    calculator
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à impact GQA doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `reducing kv heads reduces kv cache memory proportionally`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `reducing kv heads reduces kv cache memory proportionally`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: calculator.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Utiliser `numel()`, `element_size()` et une formule explicite en bytes avant de créer une abstraction dans `src/`. Le code cible indiqué par la roadmap est `calculator`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_reducing_kv_heads_reduces_kv_cache_memory_proportionally`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "reducing kv heads reduces kv cache memory proportionally"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `calculator`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "reducing kv heads reduces kv cache memory proportionally"
+
+    # Assert
+    assert actual == expected
 
 

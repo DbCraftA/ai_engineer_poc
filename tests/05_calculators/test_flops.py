@@ -6,47 +6,49 @@ def test_linear_layer_flops_are_estimated_from_matrix_dimensions():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: linear layer flops are estimated from matrix dimensions.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `linear layer flops are estimated from matrix dimensions`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - FLOPs linear
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    src/inference_lab/calculators/flops.py
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à FLOPs linear doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `linear layer flops are estimated from matrix dimensions`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `linear layer flops are estimated from matrix dimensions`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: src/inference_lab/calculators/flops.py.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec une formule fermée sur de petits entiers, par exemple `2 * M * N * K` pour un matmul dense. Le code cible indiqué par la roadmap est `src/inference_lab/calculators/flops.py`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_linear_layer_flops_are_estimated_from_matrix_dimensions`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "linear layer flops are estimated from matrix dimensions"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `src/inference_lab/calculators/flops.py`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "linear layer flops are estimated from matrix dimensions"
+
+    # Assert
+    assert actual == expected
 
 
 @pytest.mark.tdd
@@ -54,46 +56,48 @@ def test_model_decode_flops_can_be_estimated_from_architecture():
     """
     Objectif
     --------
-    Spécifier clairement la connaissance: model decode flops can be estimated from architecture.
+    Dans ce test, l'objectif est de vérifier que pour un cas minimal lié à `model decode flops can be estimated from architecture`, le comportement attendu est observable directement dans le test avant d'être extrait dans le code source.
 
-    Concepts à comprendre
-    ---------------------
-    - FLOPs modèle
-    - shapes et layout lorsque pertinent
-    - différence entre tenseur temporaire, paramètre, buffer et sortie
-    - rôle dans l'inférence LLM lorsque pertinent
-
-    Code cible
-    ----------
-    calculator
+    Pourquoi c'est important
+    ------------------------
+    Ce test sert de contrat TDD. Il doit expliquer ce que l'on veut apprendre, quel comportement doit exister, et quelle API minimale devra émerger dans `src/` lorsque la section sera activée.
 
     Comportement à vérifier
     -----------------------
-    Le comportement lié à FLOPs modèle doit être observable avec un exemple minimal et déterministe.
+    Étant donné un exemple volontairement petit qui illustre `model decode flops can be estimated from architecture`, quand on exécutera l'opération cible, alors le résultat devra correspondre exactement à l'attendu décrit par le nom du test.
 
     Assertion attendue
     ------------------
-    assert condition_attendue  # à remplacer par une assertion concrète lors de l’activation
+    `assert actual == expected` avec `expected` remplacé par la valeur concrète attendue pour `model decode flops can be estimated from architecture`.
 
     Hints d'implémentation
     ----------------------
-    Commencer avec torch.manual_seed(0), de petits tenseurs CPU et torch.testing.assert_close si flottant. Code cible: calculator.
-
-    Critère de réussite
-    -------------------
-    Le test doit d'abord échouer en RED pour une raison pertinente, puis passer en GREEN
-    après l'implémentation minimale dans src/.
+    Commencer avec une formule fermée sur de petits entiers, par exemple `2 * M * N * K` pour un matmul dense. Le code cible indiqué par la roadmap est `calculator`.
 
     TDD
     ---
-    1. supprimer pytest.skip()
-    2. construire un Arrange / Act / Assert minimal
-    3. écrire l'assertion attendue
-    4. obtenir RED
-    5. implémenter le minimum dans src/
-    6. obtenir GREEN
-    7. refactorer sans changer le comportement
+    1. supprimer `pytest.skip(...)` ;
+    2. conserver ou affiner l'Arrange / Act / Assert ci-dessous ;
+    3. obtenir RED si le code cible n'existe pas encore ou si le comportement est faux ;
+    4. implémenter le minimum dans `src/` ;
+    5. obtenir GREEN ;
+    6. refactorer sans changer le comportement.
     """
+
     pytest.skip("Roadmap TDD — section pas encore activée")
+
+    # Arrange
+    # Construire ici un exemple minimal qui rend visible le comportement :
+    # `test_model_decode_flops_can_be_estimated_from_architecture`.
+    # Remplacer cette valeur texte par une vraie valeur attendue lors de l'activation.
+    expected = "model decode flops can be estimated from architecture"
+
+    # Act
+    # Appeler ici la fonction ou méthode cible qui émergera de `calculator`.
+    # Remplacer cette valeur texte par le résultat réellement observé.
+    actual = "model decode flops can be estimated from architecture"
+
+    # Assert
+    assert actual == expected
 
 
