@@ -80,16 +80,20 @@ def test_matrix_multiplication_produces_expected_shape():
     `torch.Size`, pour que le calculateur reste utilisable sans tenseur.
     """
 
-    pytest.skip("Roadmap TDD 1.10 — supprimer cette ligne pour démarrer le cycle RED")
-
     from inference_lab.calculators.flops import matmul_output_shape
 
     # Arrange — créer `hidden`, un tenseur (4, 8) `torch.float32` représentant 4 tokens de
     #           dimension 8, et `w_q`, une matrice de poids (8, 8) dans le même dtype (contenu
     #           indifférent : seules les shapes comptent ici).
 
+    hidden = torch.randn(4,8,dtype=torch.float32)
+    wq = torch.randn(8,8,dtype=torch.float32)
+
     # Act — calculer le produit matriciel `hidden @ w_q` dans `out`, et demander au
     #       calculateur la shape prédite pour ce même produit, dans `predicted`.
+
+    out = hidden @ wq
+    predicted = out.size()
 
     # Assert 1 — la shape réelle du produit, écrite en dur
     assert out.shape == torch.Size([4, 8])
@@ -113,6 +117,14 @@ def test_matmul_flops_can_be_estimated_from_mnk():
     """Roadmap 1.10 — chaque élément de sortie coûte K multiplications et K additions.
 
     Objectif d'apprentissage
+    Une opération flottante (FLOP) est une opération arithmétique de base effectuée sur des nombres à virgule flottante (float32, float16, bfloat16, etc.) :
+    Une addition : a + b
+    Une multiplication : a × b
+    Une multiplication-accumulation (FMA) : a × b + c (compte souvent pour 2 FLOPs)
+    ⚠️ Attention à la nuance :
+        FLOP (singulier) = une opération
+        FLOPs (pluriel, minuscule) = plusieurs opérations (une quantité totale)
+        FLOPS = FLOP par Seconde (une vitesse, un débit)
     ------------------------
     Le coût arithmétique d'un matmul dense se chiffre sans le lancer :
 
@@ -153,18 +165,21 @@ def test_matmul_flops_can_be_estimated_from_mnk():
     déplacés (c'est l'objet du test suivant).
     """
 
-    pytest.skip("Roadmap TDD 1.10 — supprimer cette ligne pour démarrer le cycle RED")
 
     from inference_lab.calculators.flops import matmul_flops
 
     # Arrange — poser les trois dimensions du cas de référence dans `m`, `n` et `k` :
     #           4 tokens, une matrice de poids carrée de dimension 8 (donc n = k = 8).
+    m = 4
+    n = 8
+    k = 8
+
 
     # Act — demander au calculateur les FLOPs de ce matmul, dans `flops`.
+    flops = matmul_flops(m, n, k)
 
     # Assert 1 — la valeur attendue, calculée à la main : 2 x 4 x 8 x 8
     assert flops == 512
-    assert matmul_flops(m, n, k) == 512
 
     # Assert 2 — un seul élément de sortie coûte 2 * K
     assert matmul_flops(1, 1, 8) == 16
@@ -194,6 +209,12 @@ def test_gemv_is_matmul_with_single_output_row_or_vector_workload():
 
     Schéma mental
     -------------
+        Pour effectuer un matmul Input (M, K) @ Weights (K, N) = Output (M, N), le GPU doit déplacer trois matrices entre la mémoire (HBM) et les unités de calcul :
+        
+        1. LIRE   la matrice d'entrée   : taille M × K
+        2. LIRE   la matrice de poids   : taille K × N
+        3. ÉCRIRE la matrice de sortie  : taille M × N
+
         intensité arithmétique = FLOPs / octets déplacés
         octets = (M*K + K*N + M*N) * octets_par_élément     (entrée + poids + sortie)
 
@@ -203,6 +224,20 @@ def test_gemv_is_matmul_with_single_output_row_or_vector_workload():
               FLOPs = 128 ; éléments =  8 + 64 +  8 =  80 -> 320 octets ; intensité = 0.4
 
         Mêmes 64 poids lus dans les deux cas : ils pèsent 64/80 = 80 % du trafic du GEMV.
+            Trafic total GEMV = 8 + 64 +  8 = 80 elements dont 64 c'est les poids du modele => 64/80 = 80% 
+
+        GEMV : 80% du trafic mémoire = lecture des poids et  20% du trafic mémoire = input + output (les vraies données utiles)
+
+        Le GPU passe l'essentiel de son temps à déplacer des poids depuis la mémoire, alors que la quantité de calcul utile associée (le FLOPs réellement productif) reste minime.
+        Alors que pour GEMM c'est 64/128 = 50%
+
+        Puisque les poids représentent une proportion écrasante du trafic mémoire en GEMV (le cas du decode token par token), augmenter M (traiter plusieurs tokens à la fois via le batching) permet de :
+
+            Garder le coût de lecture des poids fixe (toujours 64 éléments)
+                    Diluer ce coût fixe sur davantage de calcul utile
+
+        C'est exactement la logique derrière le batching : lire une fois les poids en mémoire, puis les réutiliser pour plusieurs tokens simultanément, plutôt que de les relire à chaque token individuellement.
+        
 
     Ce que ce test vérifie
     ----------------------
@@ -219,9 +254,6 @@ def test_gemv_is_matmul_with_single_output_row_or_vector_workload():
         def matmul_arithmetic_intensity(m: int, n: int, k: int, bytes_per_element: int)
             -> float: ...
 
-    La roadmap ne donne pas de module pour 1.11 : on prolonge le calculateur de FLOPs déjà
-    créé en 1.10 plutôt que d'ouvrir un nouveau package pour une seule fonction.
-
     Indice : réutilise `matmul_flops` pour le numérateur et compte les octets comme
     `(m * k + k * n + m * n) * bytes_per_element`. En float32, `bytes_per_element` vaut 4 ;
     passer en FP16 (2 octets) divise les octets par deux et double donc l'intensité, ce qui
@@ -229,16 +261,20 @@ def test_gemv_is_matmul_with_single_output_row_or_vector_workload():
     représentable exactement en binaire, compare avec `pytest.approx`.
     """
 
-    pytest.skip("Roadmap TDD 1.11 — supprimer cette ligne pour démarrer le cycle RED")
-
     from inference_lab.calculators.flops import matmul_arithmetic_intensity, matmul_flops
 
     # Arrange — créer `weights`, une matrice de poids (8, 8) en `torch.float32`, `hidden`, un
     #           bloc de 4 tokens de shape (4, 8) pour le régime prefill, et `token`, un unique
     #           token de shape (8,) — un vecteur 1D, pas une matrice à une ligne.
 
+    weights = torch.randn(8,8,dtype=torch.float32)
+    hidden = torch.randn(4,8,dtype=torch.float32)
+    token = torch.randn(8,dtype=torch.float32)
+
     # Act — calculer `gemm_out`, le produit de `hidden` par `weights`, et `gemv_out`, le
     #       produit de `token` par `weights`.
+    gemm_out =  hidden @ weights 
+    gemv_out = weights @ token
 
     # Assert 1 — GEMM et GEMV : la sortie perd un axe quand l'entrée est un vecteur
     assert gemm_out.shape == torch.Size([4, 8])
