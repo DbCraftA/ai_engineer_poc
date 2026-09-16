@@ -16,6 +16,8 @@
 | 1.7 | view, reshape | tests/01_tensors/test_view_and_reshape.py::test_reshape_may_materialize_when_required | src/inference_lab/tensors/layout.py | TODO |
 | 1.8 | FP32, FP16, BF16 | tests/01_tensors/test_dtypes.py::test_dtype_controls_bytes_per_element | src/inference_lab/tensors/dtypes.py | TODO |
 | 1.8 | FP32, FP16, BF16 | tests/01_tensors/test_dtypes.py::test_reduced_precision_changes_numerical_accuracy | src/inference_lab/tensors/dtypes.py | TODO |
+| 1.8 | plage dynamique, overflow | tests/01_tensors/test_dtypes.py::test_fp16_overflows_where_bf16_keeps_dynamic_range | src/inference_lab/tensors/dtypes.py | TODO |
+| 1.8 | plage dynamique, flush-to-zero | tests/01_tensors/test_dtypes.py::test_fp16_flushes_tiny_values_to_zero_while_absolute_error_hides_it | src/inference_lab/tensors/dtypes.py | TODO |
 | 1.9 | mémoire tensor | tests/01_tensors/test_dtypes.py::test_tensor_memory_equals_numel_times_element_size | src/inference_lab/tensors/memory.py | TODO |
 | 1.10 | matmul, M/N/K | tests/01_tensors/test_matmul.py::test_matrix_multiplication_produces_expected_shape | src/inference_lab/calculators/flops.py | TODO |
 | 1.10 | matmul, M/N/K | tests/01_tensors/test_matmul.py::test_matmul_flops_can_be_estimated_from_mnk | src/inference_lab/calculators/flops.py | TODO |
